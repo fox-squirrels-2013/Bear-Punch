@@ -49,11 +49,12 @@ require APP_ROOT.join('config', 'database')
 
 env_config = YAML.load_file(APP_ROOT.join('config', 'twitter.yml'))
 
-Twitter.configure do |config|
-  config.consumer_key = ENV['TWITTER_KEY']
-  config.consumer_secret = ENV['TWITTER_SECRET']
-end
+ENV['TWITTER_KEY'] = env_config['TWITTER_KEY']
+ENV['TWITTER_SECRET'] = env_config['TWITTER_SECRET']
 
-ENV['TWITTER_KEY'] = "NVFj6JBUM839caQACdEz7Q"
-ENV['TWITTER_SECRET'] = "yIcZHVIXY9PnUcuJiObBkSjwgMpIbz3BFDjjwiY2w" # we should remove this sometime :)
+# Twitter.configure do |config|
+#   config.consumer_key = ENV['TWITTER_KEY']
+#   config.consumer_secret = ENV['TWITTER_SECRET']
+# end
+
 
