@@ -23,8 +23,8 @@ post '/' do # to be removed
   @user = User.create(params) 
   if @user
     session[:email] = params[:email]
-    session[:first_name] = params[:first_name]
-    session[:id] = params[:id]
+    session[:first_name] = @user.first_name
+    session[:id] = @user.id
     # add Sinatra Flash message to say 'account created! welcome to your new page'
   else
     # deliver Sinatra Flash error message
