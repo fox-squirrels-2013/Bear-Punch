@@ -3,8 +3,7 @@ class CreateFacebookAccounts < ActiveRecord::Migration
     create_table :facebook_accounts do |t|
       t.belongs_to :user
       t.string :username
-      t.string :oauth_token
-      t.string :oauth_secret
+      t.string :access_token
       t.timestamps
     end
   end
