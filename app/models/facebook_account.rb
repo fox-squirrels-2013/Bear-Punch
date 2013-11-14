@@ -1,9 +1,6 @@
 class FacebookAccount < ActiveRecord::Base
   belongs_to :user
   after_create :get_profile_info
-  after_save
-  before_create
-  before_save
 
   def get_profile_info
     setup_user_client
