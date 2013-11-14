@@ -21,6 +21,7 @@ require "sinatra/reloader" if development?
 require 'erb'
 
 require 'oauth'
+require 'koala'
 require 'twitter'
 
 # Some helper constants for path-centric logic
@@ -49,9 +50,14 @@ require APP_ROOT.join('config', 'database')
 
 env_config = YAML.load_file(APP_ROOT.join('config', 'twitter.yml'))
 
-ENV['TWITTER_KEY'] = env_config['TWITTER_KEY']
-ENV['TWITTER_SECRET'] = env_config['TWITTER_SECRET']
+env_config.each do |key,value|
+  ENV[key] = value
+end
 
+# ENV['TWITTER_KEY'] = env_config['TWITTER_KEY']
+# ENV['TWITTER_SECRET'] = env_config['TWITTER_SECRET']
+# ENV['FACEBOOK_KEY'] = env_config['FACEBOOK_KEY']
+# ENV['FACEBOOK_SECRET'] = env_config['FACEBOOK_SECRET']
 # Twitter.configure do |config|
 #   config.consumer_key = ENV['TWITTER_KEY']
 #   config.consumer_secret = ENV['TWITTER_SECRET']

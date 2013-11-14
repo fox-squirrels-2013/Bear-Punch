@@ -50,9 +50,14 @@ post '/login' do
   end
 end
 
-get '/sign_in' do
-  # the `request_token` method is defined in `app/helpers/oauth.rb`
-  redirect request_token.authorize_url
+get '/sign_in_FB' do
+  redirect facebook_auth_url
+  p session
+end
+
+get '/sign_in_twitter' do
+  # the `request_token_twitter` method is defined in `app/helpers/oauth.rb`
+  redirect request_token_twitter.authorize_url
 end
 
 get '/sign_out' do
@@ -60,9 +65,15 @@ get '/sign_out' do
   redirect '/'
 end
 
+get '/auth_fb' do
+  get_fb_access(params[:code])
+  # save access code to db
+  redirect '/'
+end
+
 get '/auth' do
-  # the `request_token` method is defined in `app/helpers/oauth.rb`
-  @access_token = request_token.get_access_token(:oauth_verifier => params[:oauth_verifier])
+  # the `request_token_twitter` method is defined in `app/helpers/oauth.rb`
+  @access_token = request_token_twitter.get_access_token(:oauth_verifier => params[:oauth_verifier])
   # our request token is only valid until we use it to get an access token, so let's delete it from our session
   session.delete(:request_token)
   @user = User.find_by_id(session[:id])
