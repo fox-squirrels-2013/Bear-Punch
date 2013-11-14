@@ -1,23 +1,39 @@
 get '/' do
+  @user = User.find_by_id(session[:id])
+  if @user
+    @twitter = TwitterAccount.find_by_user_id(session[:id])
+  end
   erb :index # to be removed
   # erb :old_index
 end
 
+post '/tweet' do
+  @user = User.find_by_id(session[:id])
+  @twitter = TwitterAccount.find_by_user_id(session[:id])
+  curr_client = Twitter::Client.new(
+    :consumer_key => ENV['TWITTER_KEY'],
+    :consumer_secret => ENV['TWITTER_SECRET'],
+    :oauth_token => @twitter.oauth_token,
+    :oauth_token_secret => @twitter.oauth_secret)
+  curr_client.update(params[:tweet])
+  redirect '/'
+end
+
 post '/' do # to be removed
-  @user = User.create(params)
-  # TODO: implement @twitter 
+  @user = User.create(params) 
   if @user
     session[:email] = params[:email]
     session[:first_name] = params[:first_name]
-    erb :index # or member's personal page -- whatever that is
+    session[:id] = params[:id]
     # add Sinatra Flash message to say 'account created! welcome to your new page'
   else
     # deliver Sinatra Flash error message
-    erb :index
   end
+  erb :index
 end # to be removed
 
 get '/login' do
+  # take people away from /login, if possible
   erb :login
 end
 
@@ -26,7 +42,8 @@ post '/login' do
   if @user && @user.password == params[:password]
     session[:email] = params[:email]
     session[:first_name] = @user.first_name
-    erb :index
+    session[:id] = @user.id
+    redirect '/'
   else
     redirect '/login'
     # add Sinatra Flash message to say it failed
@@ -48,9 +65,9 @@ get '/auth' do
   @access_token = request_token.get_access_token(:oauth_verifier => params[:oauth_verifier])
   # our request token is only valid until we use it to get an access token, so let's delete it from our session
   session.delete(:request_token)
-
+  @user = User.find_by_id(session[:id])
+  TwitterAccount.create(:user_id => @user.id, :username => @access_token.params[:screen_name], :oauth_token => @access_token.token, :oauth_secret => @access_token.secret)
   # at this point in the code is where you'll need to create your user account and store the access token
 
-  erb :old_index
-  
+  redirect '/'  
 end
