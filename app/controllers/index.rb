@@ -2,6 +2,7 @@ get '/' do
   @user = User.find_by_id(session[:id])
   if @user
     @twitter = TwitterAccount.find_by_user_id(session[:id])
+    # add similar line for FB
   end
   erb :index # to be removed
   # erb :old_index
@@ -52,7 +53,6 @@ end
 
 get '/sign_in_FB' do
   redirect facebook_auth_url
-  p session
 end
 
 get '/sign_in_twitter' do

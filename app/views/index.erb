@@ -1,4 +1,4 @@
-<% if session[:email] %>
+<% if session[:first_name] %>
   <p><%= "Welcome to your personal page, #{session[:first_name]}!" %></p>
   <button><a href="/sign_in_FB">Add your FB account</a></button>
   <% if @twitter %>
