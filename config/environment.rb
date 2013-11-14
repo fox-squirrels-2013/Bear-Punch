@@ -54,10 +54,4 @@ Twitter.configure do |config|
   config.consumer_secret = ENV['TWITTER_SECRET']
 end
 
-# Twitter.configure do |config|
-#   config.consumer_key = "NVFj6JBUM839caQACdEz7Q"
-#   config.consumer_secret = "yIcZHVIXY9PnUcuJiObBkSjwgMpIbz3BFDjjwiY2w"
-# end
-
-
 
