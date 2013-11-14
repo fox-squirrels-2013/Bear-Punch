@@ -1,24 +1,20 @@
-<div class="container">
-  <h1>BEAR PUNCH</h1>
-
-  <%
-    # In our real-world application, this is not what we want. Instead, we should
-    # be checking to see if there is currently a user logged-in, and if there is,
-    # we should show her a form that will allow her to send a tweet. If there is no
-    # user logged-in, we should show the sign-in button.
-  %>
-  <% if @access_token %>
-    <div>
-      <p>
-        <strong>token:</strong> <%= @access_token.token %><br>
-        <strong>secret:</strong> <%= @access_token.secret %><br>
-      </p>
-      <p>
-        <button><a href="/sign_out">Sign Out</a></button>
-      </p>
-    </div>
-  <% else %>
-    <button><a href="/sign_in">Sign In with Twitter</a></button>
-  <% end %>
-  
-</div>
+<% if session[:email] %>
+  <%= "Welcome to your personal page, #{session[:first_name]}!" %>
+  <form>
+    Tweet: <input type="text" name="tweet">
+    <input type="submit" value="Tweet">
+  </form>
+  <button><a href="/sign_in">Add My Twitter Account</a></button>
+<% else %>
+  <p>Already have an account? <a href="/login">Log in</a>.</p>
+  <h1>Bear Punch</h1>
+  <p><em>What could possibly go wrong?</em></p>
+  <h3>Your personal social dashboard and curator. Sign up below:</h3>
+  <form action="/" method="post">
+    <p>Email address: <input type="text" name="email"></p>
+    <p>First name: <input type="text" name="first_name"></p>
+    <p>Last name: <input type="text" name="last_name"></p>  
+    <p>Password: <input type="text" name="password"></p>
+    <input type="submit" value="Create Account">
+  </form>
+<% end %>
