@@ -9,10 +9,8 @@ $(document).ready(function() {
     setTimeout(function(){$("#delivered_form").text("Completing scan...")}, 7000)
     setTimeout(displayScanning, 7000)
     setTimeout(function(){$("#delivered_form").toggleClass("bigger_text")}, 9000)    
-    setTimeout(function(){$("#delivered_form").text("Final Form!")}, 9000)
+    setTimeout(function(){$("#delivered_form").text("")}, 9000)
     setTimeout(displayForm, 9000)
-
-    // setTimeout(fadeInDeliveredForm, 900)
   })
 
   function fadeOutEvaluate() {
@@ -30,6 +28,6 @@ $(document).ready(function() {
   }
 
   function displayForm() {
-    $("#delivered_form").animate({opacity:1}, 500)
+    $("#true_delivered_form").animate({opacity:1}, 500)
   }
 });
