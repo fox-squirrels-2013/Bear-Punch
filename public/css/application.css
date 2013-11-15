@@ -66,6 +66,28 @@
   text-align: center; 
 }
 
+#deficiency_list {
+  list-style: none;
+  text-align: left;
+  margin-left: 10%;
+  font-size: 16pt;
+}
+
+.severe {
+  color: red;
+  /*white-space: pre;*/
+}
+
+.below_avg {
+  color: orange;
+  /*white-space: pre;*/
+}
+
+.bigger_text {
+  font-size: 24px;
+  color: #24478F;
+}
+
 #deficiencies {
 
 }
@@ -74,7 +96,4 @@
 
 }
 
-.bigger_text {
-  font-size: 24px;
-  color: #24478F;
-}
+
