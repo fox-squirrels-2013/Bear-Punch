@@ -12,6 +12,13 @@ get '/' do
       @tweets = tweets.map {|tweet| tweet.text}
     end
     @facebook = FacebookAccount.find_by_user_id(session[:id])
+    if @facebook
+      @graph = Koala::Facebook::API.new(@facebook.access_token)
+      messages = @graph.fql_query("SELECT message FROM stream WHERE source_id = me()")
+      p messages
+      @messages = messages.map {|x| x["message"]}
+      p @messages
+    end
   end
 
   erb :index
