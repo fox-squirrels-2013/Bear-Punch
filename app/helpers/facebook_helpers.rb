@@ -1,3 +1,4 @@
+require 'awesome_print'
  helpers do
 
   def initialize_rest_access
@@ -48,7 +49,8 @@
    end
 
    def get_friends
-    # get all friends from user
+     @user_friends = Friend.where(facebook_account_id: session[:id] )
+     ap @user_friends
   end
 
   def add_friends

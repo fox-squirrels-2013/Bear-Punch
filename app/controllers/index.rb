@@ -17,12 +17,20 @@ get '/' do
       messages = @graph.fql_query("SELECT message FROM stream WHERE source_id = me()")
       
       @messages = messages.map {|x| x["message"]}
+
+      get_friends
       
     end
   end
 
   erb :index
 end
+
+get '/test' do
+  get_friends
+
+  redirect '/'
+  end
 
 post '/tweet' do
   @user = User.find_by_id(session[:id])
@@ -42,7 +50,7 @@ post '/facebook' do
   graph = Koala::Facebook::API.new(@facebook.access_token)
   graph.put_wall_post(text_to_post)
 
-  
+
 
 
   # @graph = initialize_rest_access
