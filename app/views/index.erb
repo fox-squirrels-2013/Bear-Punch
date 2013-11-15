@@ -41,15 +41,25 @@
 
 <!-- In the event that user is not yet logged in -->
 <% else %>
-  <p>Already have an account? <a href="/login">Log in</a>.</p>
-  <h1>Bear Punch</h1>
-  <p><em>What could possibly go wrong?</em></p>
-  <h3>Your personal social dashboard and curator. Sign up below:</h3>
-  <form action="/" method="post">
-    <p>Email address: <input type="text" name="email"></p>
-    <p>First name: <input type="text" name="first_name"></p>
-    <p>Last name: <input type="text" name="last_name"></p>  
-    <p>Password: <input type="password" name="password"></p>
-    <input type="submit" value="Create Account">
-  </form>
+<div class="landing">
+  <div class="header">
+    <p id="account">Already have an account? <a href="/login">Log in</a>.</p>
+    <h1 id="bearpunch">Bear Punch</h1>
+  </div>
+  <br><br>
+  <div class="subheader">
+    <p><em>What could possibly go wrong?</em></p>
+    <h3>Your personal social dashboard and curator. Sign up below:</h3>
+  </div>
+  <div class="signup">
+    <br><br>
+    <form action="/" method="post">
+      <p>Email address: <input type="text" name="email"></p>
+      <p>First name: <input type="text" name="first_name"></p>
+      <p>Last name: <input type="text" name="last_name"></p>  
+      <p>Password: <input type="password" name="password"></p>
+      <input type="submit" value="Create Account">
+    </form>
+  </div>
+</div>
 <% end %>
