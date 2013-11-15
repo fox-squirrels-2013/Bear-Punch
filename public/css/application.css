@@ -1,19 +1,48 @@
-div {
+.title {
+  color: #24478F;
+  text-align: center;
+}
+
+#upper_content {
+  width: 100%;
+  display: inline-block;
+  /*margin: 150px;*/
+}
+
+#facebook {
+  left: 5%;
   position: absolute;
   width: 43%;
   border: #9A7958 solid 2px;
   padding: 5px;
 }
 
-.title {
-  color: #24478F;
-  text-align: center;
-}
-
-#facebook {
-  left: 5%;
-}
-
 #twitter {
   right: 5%;
+  position: absolute;
+  width: 43%;
+  border: #9A7958 solid 2px;
+  padding: 5px;
+}
+
+#eval_heading {
+  float: bottom;
+  text-align: center;
+  position: absolute;
+  top: 70%;
+  display: inline-block;
+}
+
+#evaluate {
+  border: 0;
+  border-radius: 12px;
+  background-color: red;
+  color: white;
+  font-size: 16px;
+  width: 30%;
+  height: 3%;
+  left: 35%;
+  top: 78%;
+  position: absolute;
+  display: inline-block;
 }
