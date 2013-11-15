@@ -4,11 +4,10 @@ class FacebookAccount < ActiveRecord::Base
 
   def get_profile_info
     graph = setup_user_client
-    
-     # setup koala client
-
-    # make a call for profile info
-    # save it to the some table
+    user = graph.get_object("me")
+    self.fb_id = user["id"]
+    self.username = user["username"]
+    self.save
   end
 
   private

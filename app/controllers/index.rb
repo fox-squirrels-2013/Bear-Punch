@@ -20,9 +20,13 @@ post '/tweet' do
   redirect '/'
 end
 
-get '/facebook' do 
-  @graph = initialize_rest_access
-  p get_posts
+post '/facebook' do 
+  text_to_post = params[:wall_post]
+  @facebook = FacebookAccount.find_by_user_id(session[:id])
+  @graph = Koala::Facebook::API.new(@facebook.access_token)
+  @graph.put_wall_post(text_to_post)
+  # @graph = initialize_rest_access
+  # p get_posts
   # @user = User.find_by_id(session[:id])
   # p "get_posts=#{get_posts}"
   redirect '/'
