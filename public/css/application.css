@@ -108,7 +108,7 @@ body {
 }
 
 .severe {
-  color: BF4D28;
+  color: #BF4D28;
 }
 
 .below_avg {
@@ -122,7 +122,7 @@ body {
 
 .small_button {
   border: 0;
-  background-color: red;
+  background-color: #993327;
   color: white;
   border-radius: 10px;
 }
