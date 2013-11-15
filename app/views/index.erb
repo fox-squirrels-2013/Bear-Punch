@@ -1,21 +1,28 @@
 <% if session[:first_name] %>
   <p><%= "Welcome to your personal page, #{session[:first_name]}!" %></p>
-  <% if @facebook %>
-    <form action="/facebook" method="post">
-      Post to wall: <input type="text" name="wall_post">
-      <input type="submit" value="Post">
-    </form>
-  <% else %>
-    <button><a href="/sign_in_FB">Add your FB account</a></button>
-  <% end %>
-  <% if @twitter %>
-    <form action="/tweet" method="post">
-      Tweet: <input type="text" name="tweet">
-      <input type="submit" value="Tweet">
-    </form>
-  <% else %>
-    <button><a href="/sign_in_twitter">Add My Twitter Account</a></button>
-  <% end %>
+  <div id="facebook">
+    <% if @facebook %>
+      <form action="/facebook" method="post">
+        Post to wall: <input type="text" name="wall_post">
+        <input type="submit" value="Post">
+      </form>
+    <% else %>
+      <button><a href="/sign_in_FB">Add your FB account</a></button>
+    <% end %>
+  </div>
+  <div id="twitter">
+    <% if @twitter %>
+      <% @tweets.each do |tweet| %>
+        <p><%= tweet %></p>
+      <% end %>
+      <form action="/tweet" method="post">
+        Tweet: <input type="text" name="tweet">
+        <input type="submit" value="Tweet">
+      </form>
+    <% else %>
+      <button><a href="/sign_in_twitter">Add My Twitter Account</a></button>
+    <% end %>
+  </div>
 <% else %>
   <p>Already have an account? <a href="/login">Log in</a>.</p>
   <h1>Bear Punch</h1>
