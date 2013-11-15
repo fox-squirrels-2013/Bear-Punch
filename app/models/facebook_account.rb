@@ -10,6 +10,11 @@ class FacebookAccount < ActiveRecord::Base
     self.fb_id = user["id"]
     self.username = user["username"]
     self.save
+
+    allfriends = graph.get_connections("me", "friends").map { |x| x["id"] }
+
+    allfriends.each {|x| Friend.create(:facebook_account_id => self.id, :friend_id => x  )}
+    
   end
 
   private
