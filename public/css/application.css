@@ -42,7 +42,7 @@
   position: absolute;
 }
 
-#delivered_form {
+#scanning_message {
   opacity: 0;
   top: 70%;
   width: 80%;
