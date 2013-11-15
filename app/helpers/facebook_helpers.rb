@@ -6,6 +6,9 @@
 
   end
   
+  def get_users_friends_ids(graph)
+    graph.get_connections("me", "friends").map { |x| x["id"] }  
+  end
 
   # def test_helper_to_make_sure_we_know_whats_going_on
   # p @rest.methods - Object.methods

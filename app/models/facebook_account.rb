@@ -1,5 +1,7 @@
 class FacebookAccount < ActiveRecord::Base
   belongs_to :user
+  has_many :friends
+
   after_create :get_profile_info
 
   def get_profile_info
