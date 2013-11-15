@@ -3,8 +3,10 @@ class FacebookAccount < ActiveRecord::Base
   after_create :get_profile_info
 
   def get_profile_info
-    setup_user_client
-    #  setup koala client
+    graph = setup_user_client
+    
+     # setup koala client
+
     # make a call for profile info
     # save it to the some table
   end
@@ -12,7 +14,7 @@ class FacebookAccount < ActiveRecord::Base
   private
 
   def setup_user_client
-    @rest = Koala::Facebook::API.new(self.access_token)
+    @graph = Koala::Facebook::API.new(self.access_token)
   end
 
 end

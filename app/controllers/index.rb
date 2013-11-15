@@ -2,10 +2,9 @@ get '/' do
   @user = User.find_by_id(session[:id])
   if @user
     @twitter = TwitterAccount.find_by_user_id(session[:id])
-    # add similar line for FB
+    @facebook = FacebookAccount.find_by_user_id(session[:id])
   end
-  erb :index # to be removed
-  # erb :old_index
+  erb :index
 end
 
 post '/tweet' do
@@ -66,8 +65,9 @@ get '/sign_out' do
 end
 
 get '/auth_fb' do
-  get_fb_access(params[:code])
-  # save access code to db
+  @fb_access_token = get_fb_access(params[:code])
+  @user = User.find_by_id(session[:id])
+  FacebookAccount.create(:user_id => @user.id, :access_token => @fb_access_token)
   redirect '/'
 end
 
