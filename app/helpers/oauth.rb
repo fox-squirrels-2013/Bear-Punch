@@ -29,11 +29,10 @@ helpers do
   end
 
   def facebook_auth_url
-     oauth_consumer_fb.url_for_oauth_code
+     oauth_consumer_fb.url_for_oauth_code(:permissions => "publish_stream")
   end
 
   def get_fb_access(code)
     @access_token = oauth_consumer_fb.get_access_token(code)
-    @access_token
   end
 end

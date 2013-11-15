@@ -1,6 +1,10 @@
 <% if session[:first_name] %>
   <p><%= "Welcome to your personal page, #{session[:first_name]}!" %></p>
-  <button><a href="/sign_in_FB">Add your FB account</a></button>
+  <% if @facebook %>
+    <p>We got yo FB info</p>
+  <% else %>
+    <button><a href="/sign_in_FB">Add your FB account</a></button>
+  <% end %>
   <% if @twitter %>
     <form action="/tweet" method="post">
       Tweet: <input type="text" name="tweet">
