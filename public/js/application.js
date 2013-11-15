@@ -1,7 +1,33 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
+  $("#evaluate").on("click", function(){
+    fadeOutEvaluate()
+    $("#scanning_message").text("Scanning...")
+    $("#scanning_message").toggleClass("bigger_text")
+    setTimeout(displayScanning, 1000)
+    setTimeout(displayScanning, 3000)
+    setTimeout(displayScanning, 5000)
+    setTimeout(function(){$("#scanning_message").text("Completing scan...")}, 7000)
+    setTimeout(displayScanning, 7000)
+    setTimeout(function(){$("#scanning_message").toggleClass("bigger_text")}, 9000)    
+    setTimeout(function(){$("#scanning_message").text("")}, 9000)
+    setTimeout(displayForm, 9000)
+  })
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+  function fadeOutEvaluate() {
+    $("#eval_heading").animate({opacity:0})
+    $("#evaluate").animate({opacity:0})
+  }
+
+  function fadeInDeliveredForm() {
+    $("#scanning_message").animate({opacity:1})
+  }
+
+  function displayScanning() {
+    $("#scanning_message").animate({opacity:1}, 500)
+    setTimeout(function(){$("#scanning_message").animate({opacity:0}, 500)}, 1000)
+  }
+
+  function displayForm() {
+    $("#true_delivered_form").animate({opacity:1}, 500)
+  }
 });
