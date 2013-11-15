@@ -4,6 +4,7 @@ get '/' do
     @twitter = TwitterAccount.find_by_user_id(session[:id])
     @facebook = FacebookAccount.find_by_user_id(session[:id])
   end
+
   erb :index
 end
 
@@ -19,8 +20,17 @@ post '/tweet' do
   redirect '/'
 end
 
+get '/facebook' do 
+  @graph = initialize_rest_access
+  p get_posts
+  # @user = User.find_by_id(session[:id])
+  # p "get_posts=#{get_posts}"
+  redirect '/'
+end  
+
 post '/' do # to be removed
   @user = User.create(params) 
+
   if @user
     session[:email] = params[:email]
     session[:first_name] = @user.first_name
