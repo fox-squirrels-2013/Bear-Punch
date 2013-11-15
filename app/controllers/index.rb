@@ -1,18 +1,23 @@
 get '/' do
   @user = User.find_by_id(session[:id])
-  if @user
-    @twitter = TwitterAccount.find_by_user_id(session[:id])
-    if @twitter
-      curr_client = Twitter::Client.new(
-        :consumer_key => ENV['TWITTER_KEY'],
-        :consumer_secret => ENV['TWITTER_SECRET'],
-        :oauth_token => @twitter.oauth_token,
-        :oauth_token_secret => @twitter.oauth_secret)
-      tweets = curr_client.user_timeline(@twitter.username, :count => 10)
-      @tweets = tweets.map {|tweet| tweet.text}
-    end
-    @facebook = FacebookAccount.find_by_user_id(session[:id])
-  end
+  # if @user
+  #   @twitter = TwitterAccount.find_by_user_id(session[:id])
+  #   if @twitter
+  #     curr_client = Twitter::Client.new(
+  #       :consumer_key => ENV['TWITTER_KEY'],
+  #       :consumer_secret => ENV['TWITTER_SECRET'],
+  #       :oauth_token => @twitter.oauth_token,
+  #       :oauth_token_secret => @twitter.oauth_secret)
+  #     tweets = curr_client.user_timeline(@twitter.username, :count => 10)
+  #     @tweets = tweets.map {|tweet| tweet.text}
+  #   end
+  #   @facebook = FacebookAccount.find_by_user_id(session[:id])
+  #   @graph = Koala::Facebook::API.new(@facebook.access_token)
+
+  #   #### fb queries
+  #    messages = @graph.fql_query("SELECT message FROM stream WHERE source_id = me()")
+  #     @messages = messages.map { |x| x["message"] }
+  # end
 
   erb :index
 end
