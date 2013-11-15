@@ -48,6 +48,10 @@
   position: absolute;
 }
 
+#evaluate:hover {
+  background-color: #FF9999;
+}
+
 #scanning_message {
   opacity: 0;
   top: 70%;
@@ -59,7 +63,7 @@
 
 .form_partial {
   opacity: 0;
-  top: 70%;
+  top: 65%;
   width: 80%;
   left: 10%;
   position: absolute;
@@ -86,12 +90,41 @@
   color: #24478F;
 }
 
-#deficiencies {
+.small_button {
+  border: 0;
+  background-color: red;
+  color: white;
+  border-radius: 10px;
+}
 
+.small_button:hover {
+  background-color: #FF9999;
+}
+
+.offscreen {
+  opacity: 0;
+  top: 165%;
+  width: 80%;
+  left: 10%;
+  position: absolute;
+  text-align: center; 
 }
 
 #personality_form {
-
+  z-index: 1;
 }
 
+#autopilot_confirm {
+  opacity: 0;
+  top: 70%;
+  width: 80%;
+  left: 10%;
+  position: absolute;
+  text-align: center;
+  z-index: 2;
+}
+
+#deficiencies {
+
+}
 
