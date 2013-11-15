@@ -42,7 +42,16 @@
   position: absolute;
 }
 
-#delivered_form {
+#scanning_message {
+  opacity: 0;
+  top: 70%;
+  width: 80%;
+  left: 10%;
+  position: absolute;
+  text-align: center;
+}
+
+#true_delivered_form {
   opacity: 0;
   top: 70%;
   width: 80%;
