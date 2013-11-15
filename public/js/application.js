@@ -28,6 +28,6 @@ $(document).ready(function() {
   }
 
   function displayForm() {
-    $("#true_delivered_form").animate({opacity:1}, 500)
+    $("#personality_form").animate({opacity:1}, 500)
   }
 });
