@@ -18,15 +18,48 @@ get '/' do
       messages = @graph.fql_query("SELECT message FROM stream WHERE source_id = me()")
       @messages = messages.map {|x| x["message"]}
     end
+    if @autopilot
+      a = ["Search inside yourself", "I liked your shirt today", "Awesome herokuapp, keep it up", "Good morning", "Wanna hang out?", "Have you seen my Buddy Herb?", "This vodka tastes a lot like I'm not going code tomorrow",
+        "Take a break from coding to go protest your upcoming state of unemployment",
+        "Let me know if you need me to be of absolutely no assistance to you",
+        "I could have sworn I mentioned my propensity to violent, psychotic alcoholic blackouts during phase 1",
+        "I really enjoyed awkwardly pairing with you",
+        "It was really great chatting with you once I knew you understood javascript",
+        "I'd rather not get into detail about how I'm doing in phase 2",
+        "I'm socially awkward in three languages - Ruby, Javascript, and HTML",
+        "You can accomplish anything you put your mind to as long as that thing is failure",
+        "I can't wait to be ashamed of what I do during cohort cohesion night",
+        "When DBC feels overwhelming, remember that you're going to die"]
+      count = 0
+      while count <= 2
+        text_to_post = a.sample
+        text_to_tweet = a.sample
+        a.delete(text_to_tweet)
+        @graph.put_wall_post(text_to_post)
+        curr_client.update(text_to_tweet)
+        count += 1
+      end
+      # redirect '/'
+    end
   end
   erb :index
 end
 
 get '/test' do
+  @facebook = FacebookAccount.find_by_user_id(session[:id])
+  @graph = Koala::Facebook::API.new(@facebook.access_token)
+
+  array_of_friends  = get_users_friends_ids
+
+  friend_id_who_gets_it = array_of_friends[0] # shuffle later
+
+
+  @graph.put_wall_post(:message => "This is a random post, cause i feel like punching bears", :target_id =>  friend_id_who_gets_it  )
+
   p get_users_friends_ids
   p create_posts
   
-
+redirect '/'
 end
 
 post '/tweet' do

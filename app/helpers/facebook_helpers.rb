@@ -61,9 +61,10 @@
 
   friend_id_who_gets_it = array_of_friends[0] # shuffle later
 
-    @graph.put_wall_post(message: "This is a random post, cause i feel like punching bears",  )
 
-    put_connections(target_id: "me", "feed", attachment.merge({:message => message}), options, &block)
+  @graph.put_wall_post(message = "This is a random post, cause i feel like punching bears", target_id =  friend_id_who_gets_it  )
+
+    
 
 
   end
