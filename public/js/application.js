@@ -1,12 +1,9 @@
 $(document).ready(function() {
-  // var evaluateButtonPressed = false
 
   $("#selection").on("submit", function(e){
     e.preventDefault()
-    // if (evaluateButtonPressed) {
-      fadeOutDeficiencies()
-      setTimeout(function(){fadeInPersonalityForm()}, 1000)
-    // }
+    fadeOutDeficiencies()
+    setTimeout(function(){fadeInPersonalityForm()}, 1000)
   })
 
   $("#evaluate").on("click", function(){
@@ -22,8 +19,6 @@ $(document).ready(function() {
     setTimeout(function(){$("#scanning_message").text("")}, 9000)
     setTimeout(displayDeficiencies, 9000)
     setTimeout(enableEnhanceButton, 9000)
-    // setTimeout(fadeInPersonalityForm, 9000)
-    // setTimeout(function(){evaluateButtonPressed = true}, 9000)
   })
 
   function fadeOutEvaluate() {
