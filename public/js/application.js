@@ -45,7 +45,7 @@ $(document).ready(function() {
         $("#autopilot_configured").html("")
         $("#cant_do_that").css("top","70%")
         $("#cant_do_that").animate({opacity: 1}, 500)
-        tweet()
+        // tweet()
       }, 900)
     })
 
