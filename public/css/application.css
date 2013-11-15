@@ -1,10 +1,19 @@
-.container {
-  margin: 20px auto;
-  width: 600px;
-  padding: 0px 20px 20px 20px;
-  border: 1px dotted black;
+div {
+  position: absolute;
+  width: 43%;
+  border: #9A7958 solid 2px;
+  padding: 5px;
 }
 
-th {
-  text-align: left;
+.title {
+  color: #24478F;
+  text-align: center;
+}
+
+#facebook {
+  left: 5%;
+}
+
+#twitter {
+  right: 5%;
 }

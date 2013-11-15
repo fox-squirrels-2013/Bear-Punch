@@ -1,24 +1,29 @@
 <% if session[:first_name] %>
-  <p><%= "Welcome to your personal page, #{session[:first_name]}!" %></p>
+  <p class="title"><%= "Welcome to your personal page, #{session[:first_name]}!" %></p>
   <div id="facebook">
+    <h3 class="title">Facebook</h3>
     <% if @facebook %>
       <form action="/facebook" method="post">
         Post to wall: <input type="text" name="wall_post">
         <input type="submit" value="Post">
       </form>
+      <% @messages.each do |message| %>
+        <p><%= message %></p>
+      <% end %>
     <% else %>
       <button><a href="/sign_in_FB">Add your FB account</a></button>
     <% end %>
   </div>
   <div id="twitter">
-    <% if @twitter %>
-      <% @tweets.each do |tweet| %>
-        <p><%= tweet %></p>
-      <% end %>
+    <h3 class="title">Twitter</h3>
+    <% if @twitter %>      
       <form action="/tweet" method="post">
         Tweet: <input type="text" name="tweet">
         <input type="submit" value="Tweet">
       </form>
+      <% @tweets.each do |tweet| %>
+        <p><%= tweet %></p>
+      <% end %>
     <% else %>
       <button><a href="/sign_in_twitter">Add My Twitter Account</a></button>
     <% end %>
