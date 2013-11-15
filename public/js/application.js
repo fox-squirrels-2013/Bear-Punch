@@ -1,9 +1,13 @@
 $(document).ready(function() {
-  var enhanceSelection
 
   $("#selection").on("submit", function(e){
     e.preventDefault()
-    enhanceSelection = $("#selection select").val()
+    var enhanceSelection = $("#selection select").val()
+    $.ajax({
+      url: "/desired_attr_to_change",
+      type: "POST",
+      data: {'attr': enhanceSelection}
+    })
     fadeOutDeficiencies()
     setTimeout(function(){$("#personality_form").removeClass("offscreen")}, 1000)
     setTimeout(function(){fadeInPersonalityForm()}, 1010)
@@ -29,10 +33,20 @@ $(document).ready(function() {
   $("#activate_autopilot").on("click", function(){
     fadeOutPersonalityForm()
     setTimeout(fadeInAutopilotConfirmation, 1000)
-    // IMPLEMENTING: set session[:autopilot] = true in a Sinatra post route via AJAX
-    // IMPLEMENTING: make 'confirm autopilot' div be displaying instead of anything else at bottom
-    // of index.erb on-browser screen if session[:autopilot] = true
+    $.ajax({
+      url: "/update_autopilot",
+      type: "POST"
+    })
   })
+
+  $("#disable_autopilot_2").on("click", function(){
+      $("#autopilot_configured").animate({opacity:0}, 500)
+      setTimeout(function(){
+        $("#autopilot_configured").html("")
+        $("#cant_do_that").css("top","70%")
+        $("#cant_do_that").animate({opacity: 1}, 500)
+      }, 900)
+    })
 
   function fadeOutEvaluate() {
     $("#eval_heading").animate({opacity:0}, 500)
@@ -77,13 +91,13 @@ $(document).ready(function() {
 
   function fadeInAutopilotConfirmation() {
     $("#autopilot_confirm").append("<h2>Autopilot Configured!</h2><button id='disable_autopilot' class='small_button'>Disable Autopilot</button>")
+    // IMPLEMENTING: add their real intel/humor/attract submission and fake others
     $("#disable_autopilot").on("click", function(){
       $("#autopilot_confirm").animate({opacity:0}, 500)
       setTimeout(function(){
         $("#autopilot_confirm").html("")
-        $("#autopilot_confirm").append("<h2>I'm sorry, I'm afraid I can't do that.</h2>")
-        setTimeout(function(){$("#autopilot_confirm").animate({opacity:1}, 500)}, 100)
-        // IMPLEMENTING: add user's first name to this h2 (have it be a partial instead?)
+        $("#cant_do_that").css("top","70%")
+        $("#cant_do_that").animate({opacity: 1}, 500)
       }, 900)
     })
     setTimeout(function(){$("#autopilot_confirm").animate({opacity:1}, 500)}, 10)
@@ -91,7 +105,6 @@ $(document).ready(function() {
 
   function fadeOutAutopilotConfirmation() {
     $("#autopilot_confirm").animate({opacity:0}, 500)
-    // IMPLEMENTING: add their real intel/humor/attract submission and fake others
   }
   
 });

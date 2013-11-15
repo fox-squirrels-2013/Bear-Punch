@@ -30,14 +30,22 @@
     <% end %>
   </div>
   </div>
-  <div id="scanning_message"></div>
-  <div id="autopilot_confirm"></div>
-  <div id="personality_form" class="form_partial offscreen"><%= erb :self_evaluation %></div>
-  <div id="deficiencies" class="form_partial offscreen"><%= erb :deficiencies %></div>
-  <% if @twitter && @facebook %>
-    <p id="eval_heading"><em>Anxious? Overwhelmed? Click below for help on Twitter and Facebook!</em></p>
-    <button id="evaluate">Evaluate My Online Presence</button>
+  <% if @autopilot %>
+    <div id="autopilot_configured">
+      <h2>Autopilot Configured!</h2>
+      <button id='disable_autopilot_2' class='small_button'>Disable Autopilot</button>
+    </div>
+  <% else %>
+    <div id="scanning_message"></div>
+    <div id="autopilot_confirm"></div>
+    <div id="personality_form" class="form_partial offscreen"><%= erb :self_evaluation %></div>
+    <div id="deficiencies" class="form_partial offscreen"><%= erb :deficiencies %></div>
+    <% if @twitter && @facebook %>
+      <p id="eval_heading"><em>Anxious? Overwhelmed? Click below for help on Twitter and Facebook!</em></p>
+      <button id="evaluate">Evaluate My Online Presence</button>
+    <% end %>
   <% end %>
+  <div id="cant_do_that"><%= erb :cant_do_that %></div>
 
 <!-- In the event that user is not yet logged in -->
 <% else %>
