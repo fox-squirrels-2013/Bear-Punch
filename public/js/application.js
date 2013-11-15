@@ -93,13 +93,6 @@ $(document).ready(function() {
     $("#autopilot_confirm").animate({opacity:0}, 500)
     // IMPLEMENTING: add their real intel/humor/attract submission and fake others
   }
-
-  // function fadeInNoNo() {
-  //   $("#autopilot_confirm").html("")
-  //   $("#autopilot_confirm").append("<h2>I'm sorry, I'm afraid I can't do that.</h2>")
-  //   setTimeout(function(){$("#autopilot_confirm").animate({opacity:1}, 500)}, 100)
-    // IMPLEMENTING: add user's first name to this h2 (have it be a partial instead?)
-  // }
   
 });
 
