@@ -1,7 +1,10 @@
 <% if session[:first_name] %>
   <p><%= "Welcome to your personal page, #{session[:first_name]}!" %></p>
   <% if @facebook %>
-    <p>We got yo FB info</p>
+    <form action="/facebook" method="post">
+      Post to wall: <input type="text" name="wall_post">
+      <input type="submit" value="Post">
+    </form>
   <% else %>
     <button><a href="/sign_in_FB">Add your FB account</a></button>
   <% end %>
