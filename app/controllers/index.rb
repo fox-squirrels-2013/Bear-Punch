@@ -22,6 +22,13 @@ get '/' do
   erb :index
 end
 
+get '/test' do
+  p get_users_friends_ids
+  p create_posts
+  
+
+end
+
 post '/tweet' do
   @user = User.find_by_id(session[:id])
   @twitter = TwitterAccount.find_by_user_id(session[:id])
