@@ -42,9 +42,7 @@ post '/facebook' do
   graph = Koala::Facebook::API.new(@facebook.access_token)
   graph.put_wall_post(text_to_post)
 
-  @allfriends = graph.get_connections("me", "friends").map { |x| x["id"] }
-
-  @allfriends.each {|x| Friend.create(:facebook_account_id => @facebook.id, :friend_id => x  )}
+  
 
 
   # @graph = initialize_rest_access
