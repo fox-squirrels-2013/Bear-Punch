@@ -1,4 +1,14 @@
 $(document).ready(function() {
+  // var evaluateButtonPressed = false
+
+  $("#selection").on("submit", function(e){
+    e.preventDefault()
+    // if (evaluateButtonPressed) {
+      fadeOutDeficiencies()
+      setTimeout(function(){fadeInPersonalityForm()}, 1000)
+    // }
+  })
+
   $("#evaluate").on("click", function(){
     fadeOutEvaluate()
     $("#scanning_message").text("Scanning...")
@@ -11,7 +21,9 @@ $(document).ready(function() {
     setTimeout(function(){$("#scanning_message").toggleClass("bigger_text")}, 9000)    
     setTimeout(function(){$("#scanning_message").text("")}, 9000)
     setTimeout(displayDeficiencies, 9000)
-    // setTimeout(displayForm, 11000)
+    setTimeout(enableEnhanceButton, 9000)
+    // setTimeout(fadeInPersonalityForm, 9000)
+    // setTimeout(function(){evaluateButtonPressed = true}, 9000)
   })
 
   function fadeOutEvaluate() {
@@ -32,7 +44,16 @@ $(document).ready(function() {
     $("#deficiencies").animate({opacity:1}, 500)
   }
 
-  function displayForm() {
+  function fadeOutDeficiencies() {
+    $("#deficiencies").animate({opacity:0}, 500)
+  }
+
+  function enableEnhanceButton() {
+    $("#enhance_button_holder").append("<input id='enhance_button' type='submit' value='Enhance!'>")
+    $("#enhance_button_holder").animate({opacity:1}, 500)
+  }
+
+  function fadeInPersonalityForm() {
     $("#personality_form").animate({opacity:1}, 500)
   }
 });

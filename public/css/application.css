@@ -48,6 +48,10 @@
   position: absolute;
 }
 
+#evaluate:hover {
+  background-color: #FF9999;
+}
+
 #scanning_message {
   opacity: 0;
   top: 70%;
@@ -84,6 +88,17 @@
 .bigger_text {
   font-size: 24px;
   color: #24478F;
+}
+
+#enhance_button {
+  border: 0;
+  background-color: red;
+  color: white;
+  border-radius: 10px;
+}
+
+#enhance_button:hover {
+  background-color: #FF9999;
 }
 
 #deficiencies {
