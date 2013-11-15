@@ -1,5 +1,6 @@
 <% if session[:first_name] %>
   <p class="title"><%= "Welcome to your personal page, #{session[:first_name]}!" %></p>
+  <div id="upper_content">
   <div id="facebook">
     <h3 class="title">Facebook</h3>
     <% if @facebook %>
@@ -28,6 +29,13 @@
       <button><a href="/sign_in_twitter">Add My Twitter Account</a></button>
     <% end %>
   </div>
+</div>
+  <% if @twitter && @facebook %>
+    <p id="eval_heading"><em>Bear Punch can scan your Facebook and Twitter timelines and use its proprietary artificial intelligence algorithms to deliver specific, actionable advice. To use this feature and improve your social life and online communication, click the button below.</em></p>
+    <button id="evaluate">Evaluate My Online Presence</button>
+  <% end %>
+
+<!-- In the event that user is not yet logged in -->
 <% else %>
   <p>Already have an account? <a href="/login">Log in</a>.</p>
   <h1>Bear Punch</h1>
