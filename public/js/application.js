@@ -17,8 +17,9 @@ $(document).ready(function() {
     setTimeout(displayScanning, 7000)
     setTimeout(function(){$("#scanning_message").toggleClass("bigger_text")}, 9000)    
     setTimeout(function(){$("#scanning_message").text("")}, 9000)
-    setTimeout(displayDeficiencies, 9000)
     setTimeout(enableEnhanceButton, 9000)
+    setTimeout(displayDeficiencies, 9000)
+    setTimeout(displayAttrSelector, 9000)
   })
 
   function fadeOutEvaluate() {
@@ -36,6 +37,7 @@ $(document).ready(function() {
   }
 
   function displayDeficiencies() {
+    $("#deficiencies").removeClass("offscreen")
     $("#deficiencies").animate({opacity:1}, 500)
   }
 
@@ -51,4 +53,13 @@ $(document).ready(function() {
   function fadeInPersonalityForm() {
     $("#personality_form").animate({opacity:1}, 500)
   }
+
+  function displayAttrSelector() {
+    $("#selection").animate({opacity:1}, 500)
+  }
+  
 });
+
+
+
+

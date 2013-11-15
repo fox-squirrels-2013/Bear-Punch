@@ -32,7 +32,7 @@
   </div>
   <div id="scanning_message"></div>
   <div id="personality_form" class="form_partial"><%= erb :self_evaluation %></div>
-  <div id="deficiencies" class="form_partial"><%= erb :deficiencies %></div>
+  <div id="deficiencies" class="form_partial offscreen"><%= erb :deficiencies %></div>
   <% if @twitter && @facebook %>
     <p id="eval_heading"><em>Anxious? Overwhelmed? Click below for help on Twitter and Facebook!</em></p>
     <button id="evaluate">Evaluate My Online Presence</button>

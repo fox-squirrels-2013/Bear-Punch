@@ -4,5 +4,16 @@
   <li>Humor: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="below_avg">Below Average</span></li>
   <li>Attractiveness: &nbsp;&nbsp;<span class="severe"><strong>SEVERELY LACKING</strong></span></li>
 </ul>
-<div id="attr_select"><%= erb :attribute_selector %></div>
+<p>Which attribute would you like Bear Punch to enhance?</p>
+<form id="selection">
+  <span id="attr_options"><select>
+    <option value="intelligence">Intelligence</option>
+    <option value="humor">Humor</option>
+    <option value="attractiveness">Attractiveness</option>
+  </select></span>
+  <span id="enhance_button_holder"></span>
+</form>
+
+<!-- just took out attr_selector erb file! -->
+
 <!-- add a dropdown menu for focus, and a button to continue; then, on next form (Miya's), say 'Just a few more questions...' and then introduce Autopilot at the end -->

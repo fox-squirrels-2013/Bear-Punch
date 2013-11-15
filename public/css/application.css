@@ -63,7 +63,7 @@
 
 .form_partial {
   opacity: 0;
-  top: 70%;
+  top: 65%;
   width: 80%;
   left: 10%;
   position: absolute;
@@ -99,6 +99,15 @@
 
 #enhance_button:hover {
   background-color: #FF9999;
+}
+
+.offscreen {
+  opacity: 0;
+  top: 165%;
+  width: 80%;
+  left: 10%;
+  position: absolute;
+  text-align: center; 
 }
 
 #deficiencies {
