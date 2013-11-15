@@ -1,3 +1,33 @@
+body {
+  background-color: #80BCA3
+}
+.landing {
+  left: 5%;
+  top: 3%;
+  position: absolute;
+  width: 90%;
+  border: #5E5E5E solid 2px;
+  padding: 10px;
+}
+
+#account {
+  text-align: right;
+  float: right;
+  width: 48%;
+}
+
+#bearpunch {
+  text-align: left;
+  float: left;
+  width: 48%;
+}
+
+.subheader {
+  float: left;
+  width: 100%;
+  text-align: left;
+}
+
 .title {
   color: #24478F;
   text-align: center;
@@ -11,7 +41,7 @@
   left: 5%;
   position: absolute;
   width: 43%;
-  border: #9A7958 solid 2px;
+  border: #5E5E5E solid 2px;
   padding: 5px;
 }
 
@@ -19,7 +49,7 @@
   right: 5%;
   position: absolute;
   width: 43%;
-  border: #9A7958 solid 2px;
+  border: #5E5E5E solid 2px;
   padding: 5px;
 }
 
@@ -38,7 +68,7 @@
 #evaluate {
   border: 0;
   border-radius: 15px;
-  background-color: red;
+  background-color: #993327;
   color: white;
   font-size: 18px;
   width: 30%;
@@ -74,7 +104,7 @@
 }
 
 .severe {
-  color: red;
+  color: BF4D28;
 }
 
 .below_avg {
