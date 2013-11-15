@@ -57,13 +57,21 @@
   text-align: center;
 }
 
-#personality_form {
+.form_partial {
   opacity: 0;
   top: 70%;
   width: 80%;
   left: 10%;
   position: absolute;
-  text-align: center;
+  text-align: center; 
+}
+
+#deficiencies {
+
+}
+
+#personality_form {
+
 }
 
 .bigger_text {

@@ -10,7 +10,8 @@ $(document).ready(function() {
     setTimeout(displayScanning, 7000)
     setTimeout(function(){$("#scanning_message").toggleClass("bigger_text")}, 9000)    
     setTimeout(function(){$("#scanning_message").text("")}, 9000)
-    setTimeout(displayForm, 9000)
+    setTimeout(displayDeficiencies, 9000)
+    // setTimeout(displayForm, 11000)
   })
 
   function fadeOutEvaluate() {
@@ -25,6 +26,10 @@ $(document).ready(function() {
   function displayScanning() {
     $("#scanning_message").animate({opacity:1}, 500)
     setTimeout(function(){$("#scanning_message").animate({opacity:0}, 500)}, 1000)
+  }
+
+  function displayDeficiencies() {
+    $("#deficiencies").animate({opacity:1}, 500)
   }
 
   function displayForm() {
