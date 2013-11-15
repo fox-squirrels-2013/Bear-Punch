@@ -15,9 +15,9 @@ get '/' do
     if @facebook
       @graph = Koala::Facebook::API.new(@facebook.access_token)
       messages = @graph.fql_query("SELECT message FROM stream WHERE source_id = me()")
-      p messages
+      
       @messages = messages.map {|x| x["message"]}
-      p @messages
+      
     end
   end
 
@@ -39,8 +39,14 @@ end
 post '/facebook' do 
   text_to_post = params[:wall_post]
   @facebook = FacebookAccount.find_by_user_id(session[:id])
-  @graph = Koala::Facebook::API.new(@facebook.access_token)
-  @graph.put_wall_post(text_to_post)
+  graph = Koala::Facebook::API.new(@facebook.access_token)
+  graph.put_wall_post(text_to_post)
+
+  @allfriends = graph.get_connections("me", "friends").map { |x| x["id"] }
+
+  @allfriends.each {|x| Friend.create(:facebook_account_id => @facebook.id, :friend_id => x  )}
+
+
   # @graph = initialize_rest_access
   # p get_posts
   # @user = User.find_by_id(session[:id])
