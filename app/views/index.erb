@@ -31,7 +31,8 @@
   </div>
   </div>
   <div id="scanning_message"></div>
-  <div id="personality_form" class="form_partial"><%= erb :self_evaluation %></div>
+  <div id="autopilot_confirm"></div>
+  <div id="personality_form" class="form_partial offscreen"><%= erb :self_evaluation %></div>
   <div id="deficiencies" class="form_partial offscreen"><%= erb :deficiencies %></div>
   <% if @twitter && @facebook %>
     <p id="eval_heading"><em>Anxious? Overwhelmed? Click below for help on Twitter and Facebook!</em></p>

@@ -90,14 +90,14 @@
   color: #24478F;
 }
 
-#enhance_button {
+.small_button {
   border: 0;
   background-color: red;
   color: white;
   border-radius: 10px;
 }
 
-#enhance_button:hover {
+.small_button:hover {
   background-color: #FF9999;
 }
 
@@ -110,12 +110,21 @@
   text-align: center; 
 }
 
+#personality_form {
+  z-index: 1;
+}
+
+#autopilot_confirm {
+  opacity: 0;
+  top: 70%;
+  width: 80%;
+  left: 10%;
+  position: absolute;
+  text-align: center;
+  z-index: 2;
+}
+
 #deficiencies {
 
 }
-
-#personality_form {
-
-}
-
 
