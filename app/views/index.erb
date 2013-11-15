@@ -22,9 +22,7 @@
         Tweet: <input type="text" name="tweet">
         <input type="submit" value="Tweet">
       </form>
-      <% @tweets.each do |tweet| %>
-        <p><%= tweet %></p>
-      <% end %>
+      <%= erb :tweets %>
     <% else %>
       <button><a href="/sign_in_twitter">Add My Twitter Account</a></button>
     <% end %>

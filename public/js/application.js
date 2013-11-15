@@ -45,6 +45,7 @@ $(document).ready(function() {
         $("#autopilot_configured").html("")
         $("#cant_do_that").css("top","70%")
         $("#cant_do_that").animate({opacity: 1}, 500)
+        tweet()
       }, 900)
     })
 
@@ -105,6 +106,14 @@ $(document).ready(function() {
 
   function fadeOutAutopilotConfirmation() {
     $("#autopilot_confirm").animate({opacity:0}, 500)
+  }
+
+  function tweet() {
+    $.ajax({
+      url: '/tweet',
+      type: 'POST',
+      data: {"tweet": "oh hai there"}
+    })
   }
   
 });

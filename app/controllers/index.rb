@@ -30,7 +30,12 @@ post '/tweet' do
     :consumer_secret => ENV['TWITTER_SECRET'],
     :oauth_token => @twitter.oauth_token,
     :oauth_token_secret => @twitter.oauth_secret)
-  curr_client.update(params[:tweet])
+  if params["tweet"]
+    text_to_tweet = params["tweet"]
+  else
+    text_to_tweet = params[:tweet]
+  end
+  curr_client.update(text_to_tweet)
   redirect '/'
 end
 
