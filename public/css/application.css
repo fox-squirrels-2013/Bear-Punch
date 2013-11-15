@@ -26,17 +26,23 @@
 #eval_heading {
   text-align: center;
   position: absolute;
+  font-size: 18px;
+  width: 100%;
   top: 70%;
+  color: white;
+  background-color: #24478F;
+  padding-top: 3px;
+  padding-bottom: 3px;
 }
 
 #evaluate {
   border: 0;
-  border-radius: 12px;
+  border-radius: 15px;
   background-color: red;
   color: white;
-  font-size: 16px;
+  font-size: 18px;
   width: 30%;
-  height: 3%;
+  height: 4%;
   left: 35%;
   top: 78%;
   position: absolute;
@@ -62,5 +68,5 @@
 
 .bigger_text {
   font-size: 24px;
-  color: blue;
+  color: #24478F;
 }

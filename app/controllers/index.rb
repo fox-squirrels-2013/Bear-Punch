@@ -15,12 +15,9 @@ get '/' do
     if @facebook
       @graph = Koala::Facebook::API.new(@facebook.access_token)
       messages = @graph.fql_query("SELECT message FROM stream WHERE source_id = me()")
-      
       @messages = messages.map {|x| x["message"]}
-      
     end
   end
-
   erb :index
 end
 
@@ -41,18 +38,10 @@ post '/facebook' do
   @facebook = FacebookAccount.find_by_user_id(session[:id])
   graph = Koala::Facebook::API.new(@facebook.access_token)
   graph.put_wall_post(text_to_post)
-
-  
-
-
-  # @graph = initialize_rest_access
-  # p get_posts
-  # @user = User.find_by_id(session[:id])
-  # p "get_posts=#{get_posts}"
   redirect '/'
 end  
 
-post '/' do # to be removed
+post '/' do
   @user = User.create(params) 
 
   if @user
@@ -64,10 +53,9 @@ post '/' do # to be removed
     # deliver Sinatra Flash error message
   end
   erb :index
-end # to be removed
+end
 
 get '/login' do
-  # take people away from /login, if possible
   erb :login
 end
 
@@ -89,7 +77,6 @@ get '/sign_in_FB' do
 end
 
 get '/sign_in_twitter' do
-  # the `request_token_twitter` method is defined in `app/helpers/oauth.rb`
   redirect request_token_twitter.authorize_url
 end
 
@@ -106,13 +93,10 @@ get '/auth_fb' do
 end
 
 get '/auth' do
-  # the `request_token_twitter` method is defined in `app/helpers/oauth.rb`
   @access_token = request_token_twitter.get_access_token(:oauth_verifier => params[:oauth_verifier])
-  # our request token is only valid until we use it to get an access token, so let's delete it from our session
   session.delete(:request_token)
   @user = User.find_by_id(session[:id])
   TwitterAccount.create(:user_id => @user.id, :username => @access_token.params[:screen_name], :oauth_token => @access_token.token, :oauth_secret => @access_token.secret)
-  # at this point in the code is where you'll need to create your user account and store the access token
-
   redirect '/'  
 end
+
