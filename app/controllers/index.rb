@@ -1,5 +1,6 @@
 get '/' do
   @user = User.find_by_id(session[:id])
+  @autopilot = session[:autopilot]
   if @user
     @twitter = TwitterAccount.find_by_user_id(session[:id])
     if @twitter
@@ -39,7 +40,15 @@ post '/facebook' do
   graph = Koala::Facebook::API.new(@facebook.access_token)
   graph.put_wall_post(text_to_post)
   redirect '/'
-end  
+end
+
+post '/update_autopilot' do
+  session[:autopilot] = true
+end 
+
+post '/desired_attr_to_change' do
+  session[:attr] = params["attr"]
+end
 
 post '/' do
   @user = User.create(params) 
