@@ -5,9 +5,9 @@ Bear-Punch
 
 What could possibly go wrong
 ==============================
-Mr. C-Dubs
-Beni Bang Bang
-Marc the spark
+Mr. C-Dubs,
+Beni Bang Bang,
+Marc the spark,
 Miya Papaya
 ==============================
 Development Trello Board: https://trello.com/b/0HQNxBp1/bear-punch
